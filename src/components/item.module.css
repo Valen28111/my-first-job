@@ -1,0 +1,9 @@
+.item {
+  transition: top .2s, left .2s;
+  transition-timing-function: ease-in-out;
+  background-position: center;
+  background-size: cover;
+  user-select: none;
+  width: var(--size);
+  height: var(--size);
+}

@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #999;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container>div {
+  background-position: center;
+  background-size: cover;
+  user-select: none;
+}
+
+.container>span {
+  position: absolute;
+  background-position: center;
+  background-size: cover;
+  user-select: none;
+}

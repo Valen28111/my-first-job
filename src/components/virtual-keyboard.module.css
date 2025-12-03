@@ -1,0 +1,110 @@
+:root {
+  --key-size: 64px;
+  /* tamaño de cada tecla */
+  --gap: 10px;
+  --bg: #1f2937;
+  /* fondo de la escena */
+  --key-bg: linear-gradient(180deg, #f3f4f6, #e5e7eb);
+  /* tecla clara */
+  --key-edge: #cbd5e1;
+  /* borde */
+  --shadow-outer: 0 6px 0 #9ca3af;
+  --shadow-inner: inset 0 -4px 0 rgba(0, 0, 0, 0.06);
+  --accent: #111827;
+  /* color de flecha */
+  --pressed-offset: 4px;
+}
+
+/* Contenedor del pad (diamante) */
+.pad {
+  width: calc(var(--key-size) * 3 + var(--gap) * 2);
+  height: calc(var(--key-size) * 2 + var(--gap) * 2);
+  position: relative;
+  display: block;
+  margin: 1rem auto;
+}
+
+/* Estilo base de tecla */
+.key {
+  --s: var(--key-size);
+  width: var(--s);
+  height: var(--s);
+  background: var(--key-bg);
+  border: 2px solid var(--key-edge);
+  border-radius: 8px;
+  box-shadow: var(--shadow-outer), var(--shadow-inner);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.08s linear, box-shadow 0.08s linear;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.key:focus {
+  outline: 3px solid rgba(99, 102, 241, 0.18);
+  outline-offset: 3px;
+}
+
+/* efecto presionado */
+.key:active,
+.key.pressed {
+  transform: translateY(var(--pressed-offset));
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 2px 0 #7d8792;
+}
+
+/* Posiciones (diamante) */
+.key.up {
+  left: calc(50% - var(--key-size)/2);
+  top: 0;
+}
+
+.key.left {
+  left: 0;
+  bottom: 0
+}
+
+.key.right {
+  right: 0;
+  bottom: 0
+}
+
+.key.down {
+  left: calc(50% - var(--key-size)/2);
+  bottom: 0;
+}
+
+/* Flechas (SVG) */
+.key svg {
+  width: 46%;
+  height: 46%;
+  display: block;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.35));
+}
+
+.key svg path {
+  fill: var(--accent);
+}
+
+/* Pequeño detalle: borde inferior resaltado para apariencia "plástica" */
+.key::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 8%;
+  height: 10%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.02));
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Responsive: reducir tamaño en pantallas pequeñas */
+@media (max-width:420px) {
+  :root {
+    --key-size: 52px;
+    --gap: 8px;
+  }
+}
